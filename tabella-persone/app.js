@@ -24,6 +24,7 @@ function createTableRows(array) {
             <th scope="row">${index + 1}</th>
             <td>${element.firstname}</td>
             <td>${element.lastname}</td>
+            <td>${element.age}</td>
             <td>${element.email}</td>
             <td>${element.phone}</td>
             <td class="actions">
