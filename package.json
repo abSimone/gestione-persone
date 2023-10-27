@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "browserify": "^17.0.0",
-    "chart.js": "^4.4.0",
     "lite-server": "^2.6.1"
   }
 }
