@@ -67,15 +67,18 @@ function removePerson(e) {
   }
 }
 
-let inputLastname = document.querySelector("[name='lastname']");
-inputLastname.addEventListener("input", applyFilters);
+let filters = document.querySelectorAll('[type="search"]');
+filters.forEach((input) => input.addEventListener("input", applyFilters));
 
 function applyFilters() {
-  let searchedLastname = inputLastname.value;
-  console.log(searchedLastname);
   createTableRows(
     people.filter((el) =>
-      el.lastname.toLowerCase().startsWith(searchedLastname.toLowerCase())
+      Array.from(filters).reduce((prev, curr) => {
+        return (
+          prev &&
+          el[curr.name].toLowerCase().startsWith(curr.value.toLowerCase())
+        );
+      }, true)
     )
   );
 }
