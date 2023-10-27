@@ -29,7 +29,16 @@
     </style>
     <main class="container mt-5">
       <h1>Persone iscritte:</h1>
-      <input type="search" />
+      <div class="card">
+        <h5 class="card-header">Filters:</h5>
+        <div class="card-body">
+          <div class="col-3 d-flex justify-content-between">
+            <label class="form-label fs-4">Lastname:&nbsp;</label>
+            <input type="search" name="lastname" class="form-control" />
+          </div>
+        </div>
+      </div>
+
       <table class="table table-info table-striped mt-4">
         <thead>
           <tr>

@@ -14,10 +14,12 @@ async function retrivePeopleData() {
   let response = await fetch(endpoint);
   people = await response.json();
   console.log(people);
-  createTableRows(people.filter((el) => el != null));
+  people = people.filter((el) => el != null);
+  createTableRows(people);
 }
 
 function createTableRows(array) {
+  tableBody.innerHTML = "";
   array.forEach((element, index) => {
     let tableRow = `
         <tr>
@@ -36,6 +38,7 @@ function createTableRows(array) {
               }">delete</span>
             </td>
         </tr>`;
+
     tableBody.insertAdjacentHTML("beforeend", tableRow);
   });
   let editSpans = document.querySelectorAll(".edit");
@@ -62,6 +65,19 @@ function removePerson(e) {
       .then((res) => console.log(res))
       .finally(() => location.reload());
   }
+}
+
+let inputLastname = document.querySelector("[name='lastname']");
+inputLastname.addEventListener("input", applyFilters);
+
+function applyFilters() {
+  let searchedLastname = inputLastname.value;
+  console.log(searchedLastname);
+  createTableRows(
+    people.filter((el) =>
+      el.lastname.toLowerCase().startsWith(searchedLastname.toLowerCase())
+    )
+  );
 }
 
 retrivePeopleData();
