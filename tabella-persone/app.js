@@ -5,7 +5,7 @@ const tableBody = document.querySelector("tbody");
 
 let backButton = document.querySelector('button[type="button"]');
 backButton.addEventListener("click", () => {
-  location.assign("http://localhost:5500/");
+  location.assign("http://localhost:3000/index.html");
 });
 
 let people = [];
@@ -50,7 +50,7 @@ function createTableRows(array) {
 function editPerson(e) {
   if (confirm("Sicuro di voler modificare l'elemento selezionato?")) {
     location.replace(
-      `http://localhost:5500/modifica/?index=${e.target.dataset["index"]}`
+      `http://localhost:3000/modifica/index.html?index=${e.target.dataset["index"]}`
     );
   }
 }

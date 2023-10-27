@@ -6,7 +6,7 @@ myForm.addEventListener("submit", sendData);
 
 let backButton = document.querySelector('button[type="button"]');
 backButton.addEventListener("click", () => {
-  location.assign("http://localhost:5500/");
+  location.assign("http://localhost:3000/index.html");
 });
 
 function retrivePeopleData() {
@@ -28,7 +28,9 @@ function sendData(e) {
         body: JSON.stringify(formattedPerson),
       });
     })
-    .then((response) => {location.assign("http://localhost:5500/tabella-persone/")});
+    .then((response) => {
+      location.assign("http://localhost:3000/tabella-persone/index.html");
+    });
 }
 
 function getUserData(formData) {

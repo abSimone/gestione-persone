@@ -6,7 +6,7 @@ myForm.addEventListener("submit", sendData);
 
 let backButton = document.querySelector('button[type="button"]');
 backButton.addEventListener("click", () => {
-  location.assign("http://localhost:5500/");
+  location.assign("http://localhost:3000/tabella-persone/index.html");
 });
 
 location.search; // ?param1=value1&param2=value2
@@ -34,7 +34,7 @@ function sendData(e) {
     method: "PATCH",
     body: JSON.stringify(formattedPerson),
   }).then((response) => {
-    location.assign("http://localhost:5500/tabella-persone/");
+    location.assign("http://localhost:3000/tabella-persone/index.html");
   });
 }
 
