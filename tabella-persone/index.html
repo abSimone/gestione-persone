@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script type="module" src="app.js"></script>
     <title>Tabella persone</title>
     <link
@@ -28,7 +29,11 @@
       }
     </style>
     <main class="container mt-5">
-      <h1>Persone iscritte:</h1>
+      <h1>
+        Persone iscritte:
+        <button type="button" class="btn btn-info">Back</button>
+        <button id="show-chart" class="btn btn-info">Show age Chart</button>
+      </h1>
       <div class="card">
         <h5 class="card-header">Filters:</h5>
         <div class="card-body d-flex justify-content-between">
@@ -50,24 +55,29 @@
           </div>
         </div>
       </div>
-
-      <table class="table table-info table-striped mt-4">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col">Age</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <button type="button" class="col-lg-2 col-sm-6 col-xs-12 btn btn-info">
-        Back
-      </button>
+      <div class="row">
+        <div class="col-9">
+          <table class="table table-info table-striped mt-4">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div
+          id="chart-wrapper"
+          class="col-3 mt-4 align-self-center"
+          style="height: 306px"
+        ></div>
+      </div>
     </main>
   </body>
 </html>

@@ -13,9 +13,9 @@ let people = [];
 async function retrivePeopleData() {
   let response = await fetch(endpoint);
   people = await response.json();
-  console.log(people);
   people = people.filter((el) => el != null);
   createTableRows(people);
+  // createChart();
 }
 
 function createTableRows(array) {
@@ -84,3 +84,80 @@ function applyFilters() {
 }
 
 retrivePeopleData();
+
+// CHART FUNCTIONS AND CRETION
+
+function countLessThan20() {
+  console.log("E");
+  let count = 0;
+  people.forEach((el) => {
+    if (parseInt(el.age) <= 20) {
+      count++;
+    }
+  });
+  return count;
+}
+function between20and30() {
+  let count = 0;
+  people.forEach((el) => {
+    if (parseInt(el.age) > 20 && el.age <= 30) {
+      count++;
+    }
+    console.log(count);
+  });
+  return count;
+}
+
+function countOthers() {
+  let count = 0;
+  people.forEach((el) => {
+    if (parseInt(el.age) > 30) {
+      count++;
+    }
+  });
+  return count;
+}
+const wrapper = document.getElementById("chart-wrapper");
+
+function createChart() {
+  const config = {
+    type: "pie",
+    options: {
+      plugins: {
+        legend: {
+          position: "top",
+        },
+      },
+    },
+    data: {
+      labels: ["Youngest", "Young", "Adults"],
+      datasets: [
+        {
+          data: [countLessThan20(), between20and30(), countOthers()],
+          backgroundColor: ["#ff7700", "#40ff12", "#236fff"],
+          hoverOffset: 4,
+        },
+      ],
+    },
+  };
+
+  const chart = document.createElement("canvas");
+  wrapper.append(chart);
+  chart.id = "chart";
+  new Chart(chart, config);
+
+  chartButton.innerHTML = "Hide chart";
+  chartButton.removeEventListener("click", createChart);
+  chartButton.addEventListener("click", removeChart);
+}
+
+function removeChart() {
+  wrapper.innerHTML = "";
+  chartButton.innerHTML = "Show age chart";
+  chartButton.removeEventListener("click", removeChart);
+  chartButton.addEventListener("click", createChart);
+}
+
+const chartButton = document.getElementById("show-chart");
+
+chartButton.addEventListener("click", createChart);
